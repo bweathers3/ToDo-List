@@ -31,6 +31,7 @@ before_action :authenticated?
    end
  end
 
+
  private
 
  def list_params

@@ -4,17 +4,19 @@ get 'about' => 'welcome#about'
 
 root 'welcome#index'
 
-  namespace :api, defaults: { format: :json } do
+resources :users, only: [:new, :create]
 
-   resources :users do
-      resources :lists, only: [:create, :update, :destroy]
-   end
+namespace :api, defaults: { format: :json } do
 
-    resources :lists, only: [] do
-      resources :items, only: [:create, :update]
-    end
+ resources :users do
+    resources :lists, only: [:create, :update, :destroy]
+ end
 
-    resources :items, only: [:destroy]
-
+  resources :lists, only: [] do
+    resources :items, only: [:create, :update]
   end
+
+  resources :items, only: [:destroy]
+
+end
 end
