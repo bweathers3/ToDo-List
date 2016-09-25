@@ -16,7 +16,10 @@ namespace :api, defaults: { format: :json } do
     resources :items, only: [:create, :update]
   end
 
-  resources :items, only: [:destroy]
+  resources :items, only: [:index, :destroy]
+
+  resources :lists, only: [:index]
+
 
 end
 end
